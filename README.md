@@ -1,135 +1,233 @@
-# Test Case Creator Skill
+# 🧪 Requirement Analysis Template
 
-> **Requirements-based test case generation from Gherkin user stories**
+> **Transform Azure DevOps user stories into comprehensive test documentation with Claude AI**
 
-This repository contains a Claude Skill for automated test case creation using Behavior-Driven Development (BDD) methodology. The skill analyzes user story acceptance criteria written in **Gherkin syntax** and generates comprehensive test cases in Azure DevOps-compatible CSV format.
+This template project combines Python automation with Claude AI skills to create a complete requirements-based testing workflow. Clone it, configure your Azure DevOps connection, and start generating professional test cases from Gherkin user stories in minutes!
 
-## ⚠️ Gherkin Syntax Required
+## ⚠️ Requirements
 
-This skill is designed to work with user stories that follow **Gherkin syntax** (Given/When/Then format). Scenarios must be structured using BDD conventions for optimal results.
+Before you begin, make sure you have:
 
-## What This Skill Does
+- ✅ **Python 3.6+** installed on your machine
+- ✅ **VS Code with Claude** (or Claude Desktop) for AI-powered test generation
+- ✅ **Azure DevOps** account with user stories written in **Gherkin syntax** (Given/When/Then)
+- ✅ **Personal Access Token (PAT)** from Azure DevOps with Work Items read permissions
 
-The `testcase-creator` skill transforms Gherkin user stories into two key outputs:
+## 🚀 What This Template Does
 
-1. **Requirement Analysis Document** - Detailed breakdown of scenarios, requirements, and test case mapping
-2. **Azure DevOps CSV Test Cases** - Import-ready test cases with proper formatting for Azure DevOps Test Plans
+This is a ready-to-use project template that automates your entire test documentation workflow:
 
-### Key Features
+### 1️⃣ `export-user-story` Skill - Azure DevOps Export
 
-- ✅ Automatic requirement extraction from Gherkin scenarios
-- ✅ Intelligent test case combination to minimize redundancy
-- ✅ Azure DevOps CSV format compliance (including critical formatting rules)
-- ✅ Hierarchical traceability (Scenario → Requirement → Test Case)
-- ✅ Follows BDD and requirements-based testing methodology
+Export acceptance criteria directly from Azure DevOps work items:
 
-## Quick Start
+- Fetches user stories by ID via Azure DevOps REST API
+- Converts HTML formatting to clean Gherkin syntax
+- Preserves bullet points and proper formatting
+- Saves to `docs/user-stories/` folder automatically
 
-### Usage
+### 2️⃣ `testcase-creator` Skill - Test Documentation Generation
 
-Invoke the skill in Claude Desktop or VS Code with:
+Transforms Gherkin scenarios into professional test documentation:
 
-```
-@testcase-creator generate test cases for <user_story_file>.us.txt
-```
+- **Requirement Analysis Document** - Detailed breakdown with scenario → requirement → test case mapping
+- **Azure DevOps CSV Test Cases** - Import-ready test cases with proper formatting for Test Plans
 
-**Example:**
+### ✨ Key Features
 
-```
-@testcase-creator generate test cases for eNr_118556_loading_screen.us.txt
-```
+- 🔄 **End-to-end automation** - From Azure DevOps to test cases in one command
+- 🧠 **AI-powered analysis** - Claude intelligently combines related test cases
+- 📊 **Complete traceability** - Hierarchical mapping from scenarios to requirements to test cases
+- 📁 **Azure DevOps ready** - CSV files follow exact import format requirements
+- 🎯 **BDD methodology** - Built on Behavior-Driven Development best practices
+- 🔗 **Skill chaining** - Automatically chains export → analysis → test case generation
 
-### Input Format
-
-User story files should be located in `docs/user-stories/` and follow this naming convention:
-
-```
-<UserStoryID>_<descriptive_title>.us.txt
-```
-
-**Example user story structure:**
+## 📁 Project Structure
 
 ```
-User Story ID: 118556
-Title: eNcounter Refresh: Loading Screen
-Type: User Story
-==================================================
-
-ACCEPTANCE CRITERIA:
-
-Scenario 1: Application loading screen is displayed
-Given a user launches eNcounter from the desktop shortcut
-When the application window opens
-Then the loading screen is visible to the user
-
-Scenario 2: Application loading screen completes successfully
-Given eNcounter is loading at start up
-When the loading process completes successfully
-Then the application navigates to the Welcome/Log In screen
-```
-
-### Output Files
-
-The skill generates two files with matching naming conventions:
-
-1. **Requirement Analysis:**
-
-   ```
-   docs/requirement-analysis/<UserStoryID>_<title>.RequirementAnalysis.txt
-   ```
-
-2. **Test Cases CSV:**
-   ```
-   docs/test-cases/<UserStoryID>_<title>.TestCases.csv
-   ```
-
-## File Structure
-
-```
-skill-setup/
+requirement-analysis-template/
 ├── .claude/
 │   └── skills/
-│       ├── testcase-creator/           # Main skill
-│       │   ├── SKILL.md               # Skill definition and workflow
-│       │   └── references/
-│       │       ├── azure-devops-csv-format.md      # CSV format specifications
-│       │       └── requirement-analysis-guide.md   # Methodology & best practices
-│       ├── skill-creator/             # Skill development framework
-│       └── bdd/                       # BDD/Gherkin reference skill
+│       ├── export-user-story/        # Azure DevOps export skill
+│       ├── testcase-creator/         # Test case generation skill
+│       └── skill-creator/            # Skill development framework
 ├── docs/
-│   ├── user-stories/                  # Input: Gherkin user stories
-│   ├── requirement-analysis/          # Output: Requirement analysis documents
-│   └── test-cases/                    # Output: Azure DevOps CSV test cases
-└── testcase-creator.skill             # Packaged skill file
+│   ├── user-stories/                 # Exported acceptance criteria (.us.txt)
+│   ├── requirement-analysis/         # Generated requirement analysis documents
+│   └── test-cases/                   # Generated Azure DevOps test cases (.csv)
+├── src/
+│   ├── .env                          # Azure DevOps credentials (not in git)
+│   ├── .env.example                  # Template for .env file
+│   └── export-acceptance-criteria.py # Python export script
+├── requirements.txt                  # Python dependencies
+├── prompt-example.md                 # Example usage prompts
+└── README.md
 ```
 
-## Detailed Documentation
+## 🛠️ Quick Start Guide
 
-For comprehensive guidance on the methodology and formats used by this skill, see:
+### 📥 Step 1: Clone This Template
 
-- **[Azure DevOps CSV Format](.claude/skills/testcase-creator/references/azure-devops-csv-format.md)** - Detailed specifications for Azure DevOps CSV import format, including critical formatting rules (duplicated first step, blank row separators)
-- **[Requirement Analysis Guide](.claude/skills/testcase-creator/references/requirement-analysis-guide.md)** - Complete methodology for extracting requirements from Gherkin scenarios, combining test cases effectively, and maintaining traceability
+```bash
+# Clone the repository to your machine
+git clone https://github.com/yourusername/requirement-analysis-template.git
 
-## Example Workflow
+# Navigate into the folder
+cd requirement-analysis-template
+```
 
-1. **Create user story** with Gherkin scenarios in `docs/user-stories/`
-2. **Invoke skill:** `@testcase-creator generate test cases for <filename>.us.txt`
-3. **Review outputs:**
+### 🐍 Step 2: Install Python (If Not Already Installed)
+
+**Check if Python is installed:**
+
+```bash
+python --version
+```
+
+**If you see a version number (3.6 or higher), skip to Step 3!**
+
+**If not, install Python:**
+
+1. **Download Python**:
+
+   - Go to [python.org/downloads](https://www.python.org/downloads/)
+   - Download the latest version for your operating system
+
+2. **Run the Installer**:
+
+   - ⚠️ **IMPORTANT**: Check the box "Add Python to PATH" during installation
+   - Click "Install Now"
+
+3. **Verify Installation**:
+   ```bash
+   python --version
+   ```
+   - You should see something like `Python 3.11.0`
+
+### 📦 Step 3: Install Python Dependencies
+
+Open your terminal in the project folder and run:
+
+```bash
+# Install required packages
+pip install -r requirements.txt
+```
+
+This installs:
+
+- `requests` - For Azure DevOps API communication
+- `python-dotenv` - For secure credential management
+
+**💡 Tip**: If you get "pip not found", try `python -m pip install -r requirements.txt`
+
+### 🔑 Step 4: Set Up Azure DevOps Connection
+
+**Get your Personal Access Token (PAT):**
+
+1. 🌐 Go to Azure DevOps in your browser
+2. 👤 Click your profile picture (top right) → **Personal access tokens**
+3. 🆕 Click **New Token**
+4. 📝 Configure the token:
+   - **Name**: `Requirement Analysis Tool`
+   - **Expiration**: 90 days (or your preference)
+   - **Scopes**: Select **Custom defined** and check:
+     - ✅ **Work Items** → **Read**
+5. 🔵 Click **Create**
+6. 📋 **COPY THE TOKEN** (you won't see it again!)
+
+**Configure your environment:**
+
+1. Copy the example environment file:
+
+   ```bash
+   cp src/.env.example src/.env
+   ```
+
+2. Open `src/.env` and fill in your details:
+   ```
+   AZURE_DEVOPS_ORGANIZATION=your-organization-name
+   AZURE_DEVOPS_PROJECT=your-project-name
+   AZURE_DEVOPS_PAT=your-copied-token
+   PRODUCT_PREFIX=eNr
+   ```
+
+**🔍 Where to find your information:**
+
+- **Organization**: Your Azure DevOps URL → `https://dev.azure.com/YOUR-ORG`
+- **Project**: The project name visible in Azure DevOps
+- **PAT**: The token you just copied
+
+### 🎯 Step 5: Run Your First Export
+
+Now you're ready to use the skills! Open VS Code with Claude (or Claude Desktop) in this project folder.
+
+**Example 1: Export and generate everything in one command**
+
+```
+@export-user-story 122019 --full
+```
+
+This will:
+
+1. ✅ Export acceptance criteria from Azure DevOps
+2. ✅ Generate requirement analysis document
+3. ✅ Create Azure DevOps test case CSV
+
+**Example 2: Generate test cases from existing file**
+
+```
+@testcase-creator generate test cases for eNr_122019_participants_tab.us.txt
+```
+
+See [prompt-example.md](prompt-example.md) for more examples!
+
+### 📊 Step 6: Check Your Output
+
+After running the commands, you'll find:
+
+- 📄 **User Story** → `docs/user-stories/eNr_<id>_<title>.us.txt`
+- 📋 **Analysis** → `docs/requirement-analysis/eNr_<id>_<title>.RequirementAnalysis.txt`
+- 📊 **Test Cases** → `docs/test-cases/eNr_<id>_<title>.TestCases.csv`
+
+**Import the CSV file directly into Azure DevOps Test Plans!**
+
+## 💡 Usage Examples
+
+See [prompt-example.md](prompt-example.md) for detailed examples.
+
+**Example 1: Export and generate everything (Recommended)**
+
+```
+@export-user-story 122019 --full
+```
+
+**Example 2: Generate test cases from existing file**
+
+```
+@testcase-creator generate test cases for eNr_119222_workspace_-_tools_initial_setup.us.txt
+```
+
+## 🎯 Example Workflows
+
+### Complete Workflow (Azure DevOps → Test Cases)
+
+1. **Export from Azure DevOps:** `@export-user-story 122019 --full`
+2. **Review outputs:**
+   - Acceptance criteria in `docs/user-stories/`
    - Requirement analysis in `docs/requirement-analysis/`
    - CSV test cases in `docs/test-cases/`
-4. **Import to Azure DevOps** - CSV files are ready for direct import
+3. **Import to Azure DevOps** - CSV files are ready for direct import
 
-## Examples
+## 📖 Example Files
 
-This repository includes complete examples demonstrating the skill in action:
+This repository includes complete examples:
 
-- **[eNr_118556_loading_screen](docs/user-stories/eNr_118556_loading_screen.us.txt)** - Simple 3-scenario user story
-- **[eNr_118557_welcomelog_in_screen](docs/user-stories/eNr_118557_welcomelog_in_screen_-_forms_based_authentication.us.txt)** - Complex 11-scenario authentication flow
-- **[eNr_118559_select_patient](docs/user-stories/eNr_118559_select_patient_-_encounter_cloud_search.us.txt)** - Advanced 18-scenario patient search with validation
+- **[eNr_122019_participants_tab](docs/user-stories/eNr_122019_encounter_refresh-_user_directory_-_participants_tab.us.txt)** - Exported from Azure DevOps with bullet formatting
+- **[eNr_121265_screen_share](docs/user-stories/eNr_121265_workspace-_screen_share.us.txt)** - 13-scenario screen sharing workflow
 
-Each example includes the generated requirement analysis and test case CSV files.
+Each example includes generated requirement analysis and test case CSV files.
 
-## Test Case Design Philosophy
+## 🎨 Test Case Design Philosophy
 
 The skill follows a **smart combination strategy**:
 
@@ -140,25 +238,12 @@ The skill follows a **smart combination strategy**:
 
 **Result:** Efficient, maintainable test suites that reduce execution time without sacrificing quality.
 
-## Requirements
+## 🧩 Skills Included
 
-- Claude Desktop or VS Code with Claude integration
-- Gherkin-formatted user stories
-- Understanding of BDD methodology (recommended)
-
-## Skills Included
-
-- **testcase-creator** - Main test case generation skill
+- **export-user-story** - Azure DevOps export with API integration
+- **testcase-creator** - Test case generation from Gherkin scenarios
 - **skill-creator** - Framework for creating and packaging skills
-- **bdd** - Gherkin syntax and BDD reference skill
-
-## Installation
-
-1. Clone this repository
-2. Import `testcase-creator.skill` into Claude Desktop
-3. Place user stories in `docs/user-stories/`
-4. Invoke the skill as shown in Quick Start
 
 ---
 
-**Built with Claude Skills** | Designed for efficient requirements-based testing
+**Author** | Cody Huls | Jan. 7th 2026

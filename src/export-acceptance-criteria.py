@@ -14,7 +14,7 @@ PAT = os.getenv("AZURE_DEVOPS_PAT")
 PRODUCT_PREFIX = os.getenv("PRODUCT_PREFIX", "eNr")  # Default to "eNr" if not set
 
 # Output directory for exported files
-OUTPUT_DIR = "userstories"
+OUTPUT_DIR = "../docs/user-stories"
 
 def sanitize_filename(text):
     """Convert text to lowercase and replace spaces/special chars with underscores"""
@@ -74,6 +74,13 @@ def extract_acceptance_criteria(work_item):
     acceptance_criteria = acceptance_criteria.replace('</p>', '\n')
     acceptance_criteria = acceptance_criteria.replace('</div>', '\n')
     
+    # Convert HTML list items to markdown bullet points
+    # Handle both <li> and </li> tags to preserve list structure
+    acceptance_criteria = re.sub(r'<li[^>]*>', '\n- ', acceptance_criteria)
+    acceptance_criteria = acceptance_criteria.replace('</li>', '')
+    acceptance_criteria = acceptance_criteria.replace('</ul>', '\n')
+    acceptance_criteria = acceptance_criteria.replace('</ol>', '\n')
+    
     # Remove remaining HTML tags
     acceptance_criteria = re.sub(r'<[^>]+>', '', acceptance_criteria)
     
@@ -87,6 +94,9 @@ def extract_acceptance_criteria(work_item):
     # Clean up initial whitespace and excessive blank lines
     acceptance_criteria = re.sub(r'\n\s*\n', '\n', acceptance_criteria)
     acceptance_criteria = acceptance_criteria.strip()
+    
+    # Ensure Scenario starts on a fresh line (handle cases where it's concatenated with previous text)
+    acceptance_criteria = re.sub(r'(\S)(\s*)(Scenario \d+:)', r'\1\n\n\3', acceptance_criteria)
     
     # Ensure Given, When, Then each start on their own line
     acceptance_criteria = re.sub(r'(\s+)(Given )', r'\n\2', acceptance_criteria)

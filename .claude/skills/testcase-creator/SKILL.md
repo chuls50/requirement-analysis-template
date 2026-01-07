@@ -64,7 +64,8 @@ Structure the requirement analysis as follows:
 
 | Scenario Name | Requirement | Test Case |
 |---------------|-------------|-----------|
-| Scenario <N>: <Name> | <N>.<M> <Requirement description> | <N>.<M>.<P> <Test case description> |
+| Scenario <N>: <Name>
+|  | <N>.<M> <Requirement description> | <N>.<M>.<P> <Test case description> |
 |  | <N>.<M> <Next requirement> | <N>.<M>.<P> <Test case description> |
 |  |  | <N>.<M>.<P> <Additional test case> |
 |
@@ -127,8 +128,15 @@ ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 2. **Empty first column**: ID column is always empty (Azure DevOps auto-generates)
 3. **Empty rows between test cases**: Add one blank row between test cases for separation
 4. **Multi-step format**: Continue steps as `2, 3, 4...` after the duplicated first step
+5. **Comma handling**: If a field contains commas, wrap the ENTIRE field in double quotes
+6. **Quote handling**: Use single quotes (') instead of double quotes (") for words within fields (e.g., use 'Guest' not "Guest")
 
-**⚠️ CRITICAL: Every test case MUST have its first step duplicated on consecutive rows. This is required by Azure DevOps for proper test case import. Without this duplication, the import will fail or produce incorrect results.**
+**⚠️ CRITICAL CSV Formatting Rules:**
+
+- Every test case MUST have its first step duplicated on consecutive rows
+- Fields containing commas MUST be wrapped in double quotes: `"Avatar, name, and role are displayed"`
+- Use single quotes for emphasis within fields: `Role displays as 'Guest'` (NOT "Guest")
+- Do NOT wrap individual words in double quotes - either wrap the entire field or use single quotes
 
 **Example CSV pattern:**
 
@@ -136,15 +144,15 @@ ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 ,Test Case,Verify Login Screen Display,1,Click on the link to eNOW,Login screen is displayed
 ,,,1,Click on the link to eNOW,Login screen is displayed
-,,,2,Verify all login elements are visible,Username field and password field are visible
+,,,2,Verify all login elements are visible,"Username field, password field, and submit button are visible"
 
-,Test Case,Verify Email Format Validation,1,Enter invalid email format,Validation message appears
-,,,1,Enter invalid email format,Validation message appears
-,,,2,Observe validation message,Message says "Please enter a valid email address"
-,,,3,Enter valid email format,Validation message disappears
+,Test Case,Verify Role Display,1,Navigate to user profile,Profile page is displayed
+,,,1,Navigate to user profile,Profile page is displayed
+,,,2,Observe user role,User role displays as 'Administrator'
+,,,3,Verify role format,"Role is displayed in bold, uppercase format"
 ```
 
-**Note:** The first step (Step 1) is duplicated in rows 2 and 3 of each test case. This is mandatory.
+**Note:** The first step (Step 1) is duplicated in rows 2 and 3 of each test case. Fields with commas are wrapped in double quotes.
 
 ## Test Case Design Principles
 
@@ -256,8 +264,8 @@ Before finalizing outputs:
 
 See the following example files for reference:
 
-- Input: `docs/user-stories/eNr_118556_loading_screen.us.txt`
-- Output 1: `docs/requirement-analysis/eNr_118556_loading_screen.RequirementAnalysis.txt`
-- Output 2: `docs/test-cases/eNr_118556_loading_screen.TestCases.csv`
+- Input: `docs/user-stories/eNr_121265_workspace-_screen-share.us.txt`
+- Output 1: `docs/requirement-analysis/eNr_eNr_121265_workspace-_screen-share.RequirementAnalysis.txt`
+- Output 2: `docs/test-cases/eNr_eNr_121265_workspace-_screen-share.TestCases.csv`
 
 These files demonstrate the expected format and quality standards for all outputs.
