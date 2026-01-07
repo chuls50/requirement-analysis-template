@@ -2,6 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 import re
 import os
+import sys
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -145,8 +146,11 @@ def main():
         os.makedirs(OUTPUT_DIR)
         print(f"\n✓ Created output directory: {OUTPUT_DIR}/")
     
-    # Get user story ID
-    work_item_id = input("\nEnter User Story ID: ").strip()
+    # Get user story ID from command line argument or prompt
+    if len(sys.argv) > 1:
+        work_item_id = sys.argv[1].strip()
+    else:
+        work_item_id = input("\nEnter User Story ID: ").strip()
     
     if not work_item_id.isdigit():
         print("Error: Please enter a valid numeric ID.")
@@ -178,9 +182,14 @@ def main():
     # Generate filename
     default_filename = generate_filename(work_item_id, work_item_title, PRODUCT_PREFIX)
     print(f"\nDefault filename: {default_filename}")
-    custom_filename = input("Press Enter to use default, or type a custom filename: ").strip()
     
-    filename = custom_filename if custom_filename else default_filename
+    # Use default filename if --auto flag provided or take custom input
+    if len(sys.argv) > 2 and sys.argv[2] == '--auto':
+        filename = default_filename
+        print("Using default filename (auto mode)")
+    else:
+        custom_filename = input("Press Enter to use default, or type a custom filename: ").strip()
+        filename = custom_filename if custom_filename else default_filename
     
     # Ensure .us.txt extension
     if not filename.endswith('.us.txt'):
@@ -207,8 +216,12 @@ def main():
         print(f"\n✓ Successfully exported to: {filepath}")
         print(f"  File size: {os.path.getsize(filepath)} bytes")
         
+        # Return the filename for use by calling scripts
+        return filename
+        
     except Exception as e:
         print(f"\nError saving file: {e}")
+        return None
 
 if __name__ == "__main__":
     main()
