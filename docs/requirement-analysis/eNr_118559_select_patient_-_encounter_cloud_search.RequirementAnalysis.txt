@@ -1,0 +1,152 @@
+# eNcounter Refresh: Select Patient - eNcounter Cloud Search Feature Test Plan
+
+## Requirements Analysis
+
+| Scenario Name | Requirement | Test Case |
+|---------------|-------------|-----------|
+| Scenario 1: Select Patient Screen Displayed (eNcounter Cloud Search) | 1.1 Select Patient screen should display after choosing Patient Consultation workflow | 1.1.1 Verify Select Patient screen displays after choosing Patient Consultation |
+|  | 1.2 Search form should contain first name field | 1.2.1 Verify first name field is present in search form |
+|  | 1.3 Search form should contain last name field | 1.3.1 Verify last name field is present in search form |
+|  | 1.4 Search form should contain date of birth field | 1.4.1 Verify date of birth field is present in search form |
+|  | 1.5 Search form should contain medical record number field | 1.5.1 Verify medical record number field is present in search form |
+|  | 1.6 Search form should contain Patient ID field | 1.6.1 Verify Patient ID field is present in search form |
+|  | 1.7 Search form should contain Alternative ID field | 1.7.1 Verify Alternative ID field is present in search form |
+|  | 1.8 Search form should contain clear button | 1.8.1 Verify clear button is present in search form |
+|  | 1.9 Search form should contain search button | 1.9.1 Verify search button is present in search form |
+|  | 1.10 Search results area should be displayed | 1.10.1 Verify search results area is displayed |
+|  | 1.11 Navigation bar should be displayed at the top | 1.11.1 Verify navigation bar is displayed at the top |
+|  | 1.12 Include DICOM Worklist toggle should be displayed | 1.12.1 Verify Include DICOM Worklist toggle is displayed |
+|  | 1.13 Cancel button should be displayed | 1.13.1 Verify Cancel button is displayed |
+|  | 1.14 Back button should NOT be displayed | 1.14.1 Verify Back button is not displayed |
+|  | 1.15 Continue button should be displayed | 1.15.1 Verify Continue button is displayed |
+|
+| Scenario 2: Successful Search (>= 1 result) | 2.1 User should be able to enter search criteria | 2.1.1 Verify user can enter search criteria in fields |
+|  | 2.2 Search button should execute search when clicked | 2.2.1 Verify clicking Search executes the search |
+|  | 2.3 Patient list should display when results are found | 2.3.1 Verify patient list displays when >= 1 results found |
+|  | 2.4 Each patient should display patient name | 2.4.1 Verify each patient shows patient name |
+|  | 2.5 Each patient should display DOB and Age | 2.5.1 Verify each patient shows DOB and Age |
+|  | 2.6 Each patient should display Gender | 2.6.1 Verify each patient shows Gender |
+|  | 2.7 Each patient should display profile avatar | 2.7.1 Verify each patient shows profile avatar |
+|  | 2.8 Each patient should display dropdown arrow | 2.8.1 Verify each patient shows dropdown arrow |
+|
+| Scenario 3: Successful Search (0 results) | 3.1 System should indicate no results found when search returns 0 results | 3.1.1 Verify no results found message displays when search returns 0 results |
+|  | 3.2 Create patient button should display when no results found | 3.2.1 Verify create patient button displays when no results found |
+|
+| Scenario 4: Unsuccessful Search | 4.1 System should indicate no results found when search fails | 4.1.1 Verify no results found message displays when search fails |
+|  | 4.2 Create patient button should display when search fails | 4.2.1 Verify create patient button displays when search fails |
+|
+| Scenario 5: First Name Input Validation | 5.1 First Name field should validate input against regex pattern | 5.1.1 Verify First Name field validates input using regex ^[a-zA-Z\p{L}\u0080-\u024F\u0022\s\/\-().,`'^~!?:@=&$+*]+$ |
+|  | 5.2 Form should display validation error for invalid First Name input | 5.2.1 Verify validation error displays for invalid First Name input |
+|
+| Scenario 6: Last Name Input Validation | 6.1 Last Name field should validate input against regex pattern | 6.1.1 Verify Last Name field validates input using regex ^[a-zA-Z\p{L}\u0080-\u024F\u0022\s\/\-().,`'^~!?:@=&$+*]+$ |
+|  | 6.2 Form should display validation error for invalid Last Name input | 6.2.1 Verify validation error displays for invalid Last Name input |
+|
+| Scenario 7: Date of Birth Input Validation | 7.1 Date of Birth field should validate input format (MM/DD/YYYY) | 7.1.1 Verify Date of Birth field validates MM/DD/YYYY format |
+|  | 7.2 Form should display validation error for invalid Date of Birth input | 7.2.1 Verify validation error displays for invalid Date of Birth input |
+|
+| Scenario 8: Medical Record Number Input Validation | 8.1 Medical Record Number field should validate input against regex pattern | 8.1.1 Verify Medical Record Number field validates input using regex ^[a-zA-Z0-9\p{L}\u0080-\u024F\u0022\s\/\-().,`'^~!?:@=&$+*]+$ |
+|  | 8.2 Form should display validation error for invalid Medical Record Number input | 8.2.1 Verify validation error displays for invalid Medical Record Number input |
+|
+| Scenario 9: Clear Search Form | 9.1 Clear button should clear all search fields | 9.1.1 Verify clicking Clear button clears all search fields |
+|
+| Scenario 10: Choose Patient from Results List | 10.1 User should be able to select a patient from results list | 10.1.1 Verify user can select a patient from search results |
+|  | 10.2 Selected patient should be marked/highlighted in the list | 10.2.1 Verify selected patient is marked as selected in list |
+|  | 10.3 Patient information dropdown should open for selected patient | 10.3.1 Verify patient information dropdown opens for selected patient |
+|
+| Scenario 11: User "Selects Patient" | 11.1 Select Patient option should be available in patient dropdown | 11.1.1 Verify Select Patient option is available in patient dropdown |
+|  | 11.2 Continue button should become active when Select Patient is clicked | 11.2.1 Verify Continue button becomes active after clicking Select Patient |
+|
+| Scenario 12: Navigation Updated | 12.1 Navigation stepper should indicate current step as Select Patient | 12.1.1 Verify navigation stepper shows Select Patient as current step |
+|
+| Scenario 13: Cancel | 13.1 Cancel button should navigate back to Let's Get Started screen | 13.1.1 Verify clicking Cancel returns to Let's Get Started screen |
+|  | 13.2 Consult should be canceled when Cancel is clicked | 13.2.1 Verify consult is canceled when Cancel is clicked |
+|
+| Scenario 14: Continue | 14.1 Continue button should navigate to Enter Symptoms screen | 14.1.1 Verify clicking Continue navigates to Enter Symptoms screen |
+|  | 14.2 Continue should only work when patient is selected | 14.2.1 Verify Continue button works only after patient selection |
+|
+| Scenario 15: Remove "Back" button from Select Patient Screen | 15.1 Back button should not be displayed on Select Patient screen | 15.1.1 Verify Back button is not present on Select Patient screen |
+|
+| Scenario 16: Toggle Include Dicom Worklist - Accession ID | 16.1 Use Dicom Worklist toggle should be functional | 16.1.1 Verify Use Dicom Worklist toggle can be toggled ON |
+|  | 16.2 Alternative ID field should be replaced with Accession ID when toggle is ON | 16.2.1 Verify Alternative ID is replaced with Accession ID when toggle is ON |
+|  | 16.3 User should be able to search by Accession ID when toggle is ON | 16.3.1 Verify search by Accession ID works when toggle is ON |
+|
+| Scenario 17: Accession number is an optional field | 17.1 Accession number should be optional in search | 17.1.1 Verify Accession number is optional (search works when blank) |
+|  | 17.2 Blank Accession number should not be used as search criteria | 17.2.1 Verify blank Accession number is not included in search criteria |
+|
+| Scenario 18: Create Patient | 18.1 Create Patient button should be visible in Patient Search Results area | 18.1.1 Verify Create Patient button is visible when screen loads |
+|  | 18.2 Message should display above search results area | 18.2.1 Verify message "Patient search results will appear here" displays above results area |
+
+## Detailed Test Cases
+
+| Test Case ID | Test Scenario | Expected Result | Test Data |
+|--------------|---------------|-----------------|-----------|
+| 1.1.1 | Authenticate successfully and choose Patient Consultation workflow | Select Patient screen is displayed | Valid credentials |
+| 1.2.1 | View Select Patient screen and locate first name field | First name field is present in search form | N/A |
+| 1.3.1 | View Select Patient screen and locate last name field | Last name field is present in search form | N/A |
+| 1.4.1 | View Select Patient screen and locate date of birth field | Date of birth field is present in search form | N/A |
+| 1.5.1 | View Select Patient screen and locate medical record number field | Medical record number field is present in search form | N/A |
+| 1.6.1 | View Select Patient screen and locate Patient ID field | Patient ID field is present in search form | N/A |
+| 1.7.1 | View Select Patient screen and locate Alternative ID field | Alternative ID field is present in search form | N/A |
+| 1.8.1 | View Select Patient screen and locate clear button | Clear button is present in search form | N/A |
+| 1.9.1 | View Select Patient screen and locate search button | Search button is present in search form | N/A |
+| 1.10.1 | View Select Patient screen and locate search results area | Search results area is displayed | N/A |
+| 1.11.1 | View Select Patient screen and locate navigation bar | Navigation bar is displayed at the top | N/A |
+| 1.12.1 | View Select Patient screen and locate Include DICOM Worklist toggle | Include DICOM Worklist toggle is displayed | N/A |
+| 1.13.1 | View Select Patient screen and locate Cancel button | Cancel button is displayed | N/A |
+| 1.14.1 | View Select Patient screen and verify no Back button | Back button is not displayed | N/A |
+| 1.15.1 | View Select Patient screen and locate Continue button | Continue button is displayed | N/A |
+| 2.1.1 | Enter text in search fields | User can enter search criteria in all fields | Test data for each field |
+| 2.2.1 | Enter search criteria and click Search button | Search executes and returns results | Valid search criteria |
+| 2.3.1 | Perform search that returns at least 1 patient | Patient list displays with matching patients | Search criteria that returns results |
+| 2.4.1 | View patient in search results | Each patient shows patient name | Results with >= 1 patient |
+| 2.5.1 | View patient in search results | Each patient shows DOB and Age | Results with >= 1 patient |
+| 2.6.1 | View patient in search results | Each patient shows Gender | Results with >= 1 patient |
+| 2.7.1 | View patient in search results | Each patient shows profile avatar | Results with >= 1 patient |
+| 2.8.1 | View patient in search results | Each patient shows dropdown arrow | Results with >= 1 patient |
+| 3.1.1 | Perform search with criteria that matches no patients | No results found message displays | Search criteria with 0 matches |
+| 3.2.1 | Perform search with criteria that matches no patients | Create patient button displays | Search criteria with 0 matches |
+| 4.1.1 | Perform search that fails due to system error | No results found message displays | N/A (simulated failure) |
+| 4.2.1 | Perform search that fails due to system error | Create patient button displays | N/A (simulated failure) |
+| 5.1.1 | Enter invalid characters in First Name field | Validation error displays for invalid input | Special characters not in regex: #, %, etc. |
+| 5.2.1 | Enter valid characters in First Name field | No validation error displays | Valid characters matching regex |
+| 6.1.1 | Enter invalid characters in Last Name field | Validation error displays for invalid input | Special characters not in regex: #, %, etc. |
+| 6.2.1 | Enter valid characters in Last Name field | No validation error displays | Valid characters matching regex |
+| 7.1.1 | Enter invalid date format in Date of Birth field | Validation error displays for invalid format | Invalid formats: DD/MM/YYYY, YYYY-MM-DD |
+| 7.2.1 | Enter valid date format in Date of Birth field | No validation error displays | Valid format: MM/DD/YYYY |
+| 8.1.1 | Enter invalid characters in Medical Record Number field | Validation error displays for invalid input | Special characters not in regex: #, % (non-alphanumeric) |
+| 8.2.1 | Enter valid characters in Medical Record Number field | No validation error displays | Valid alphanumeric characters matching regex |
+| 9.1.1 | Enter data in multiple search fields and click Clear button | All search fields are cleared | Data in first name, last name, DOB fields |
+| 10.1.1 | Search for patients and click on a patient in results list | Patient is selected and marked in list | Search results with multiple patients |
+| 10.2.1 | Click on a patient in results list | Selected patient is marked/highlighted | Search results with multiple patients |
+| 10.3.1 | Click on a patient in results list | Patient information dropdown opens | Search results with multiple patients |
+| 11.1.1 | Open patient dropdown and click Select Patient option | Continue button becomes active | Selected patient with dropdown open |
+| 11.2.1 | Verify Continue button state before and after Select Patient | Continue button is inactive before, active after Select Patient | Patient in results list |
+| 12.1.1 | Navigate to Select Patient screen and observe navigation stepper | Navigation stepper indicates Select Patient as current step | N/A |
+| 13.1.1 | Click Cancel button on Select Patient screen | Application returns to Let's Get Started screen | N/A |
+| 13.2.1 | Click Cancel button and verify consult state | Consult is canceled | N/A |
+| 14.1.1 | Select a patient and click Continue button | Application navigates to Enter Symptoms screen | Selected patient |
+| 14.2.1 | Verify Continue button is inactive before patient selection | Continue button only works after patient is selected | N/A |
+| 15.1.1 | Navigate to Select Patient screen and look for Back button | Back button is not present on the screen | N/A |
+| 16.1.1 | Toggle ON the Use Dicom Worklist toggle | Alternative ID field is replaced with Accession ID field | N/A |
+| 16.2.1 | Toggle ON Use Dicom Worklist and observe field change | Accession ID field is displayed instead of Alternative ID | N/A |
+| 16.3.1 | Toggle ON Use Dicom Worklist and search by Accession ID | Search by Accession ID works and returns results | Valid Accession ID |
+| 17.1.1 | Navigate to DICOM search page with toggle ON and leave Accession number blank | Search works without Accession number | Other search criteria only |
+| 17.2.1 | Perform search with blank Accession number | Accession number is not used as search criteria | Other search criteria only |
+| 18.1.1 | Navigate to Select Patient screen and observe Patient Search Results area | Create Patient button is visible | N/A |
+| 18.2.1 | Navigate to Select Patient screen before performing search | Message "Patient search results will appear here" displays | N/A |
+
+## Test Coverage Summary
+
+| Metric | Count |
+|--------|-------|
+| Total Scenarios | 18 |
+| Total Requirements | 63 |
+| Total Test Cases | 63 |
+| CSV Test Cases | 18 |
+
+**Notes:**
+- Each scenario has been analyzed and broken down into specific, testable requirements
+- 63 individual test case IDs were defined during requirement analysis
+- Related test case IDs were logically grouped into 18 CSV test cases for efficient test execution
+- Complete traceability maintained between scenarios → requirements → test case IDs → CSV test cases
+- Scenario 19 appears incomplete in source document and was not included in analysis

@@ -2,11 +2,19 @@
 
 This document provides detailed specifications for the Azure DevOps CSV test case import format.
 
+## ⚠️ CRITICAL: This is the ONLY format to use for Azure DevOps test case imports
+
+**DO NOT use any other CSV format.** Common test case CSV formats (with columns like "Test Case ID", "Priority", "Automated", "Tags", etc.) are **NOT compatible** with Azure DevOps and will fail to import.
+
+**Always use this exact structure:**
+
 ## CSV Structure
 
 ```csv
 ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 ```
+
+**This is the only valid header row for Azure DevOps test case imports.**
 
 ### Column Definitions
 
@@ -97,6 +105,26 @@ ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 
 ## Common Mistakes
 
+### ❌ Wrong CSV format entirely (MOST COMMON ERROR)
+
+**INCORRECT - Generic test case format (DO NOT USE):**
+
+```csv
+Test Case ID,Title,Test Steps,Expected Results,Priority,Area Path,Iteration Path,Automated,Tags
+TC-001,Verify Login,"1. Enter username
+2. Enter password","1. Username accepted
+2. Password accepted",1,Project,,No,Login
+```
+
+**CORRECT - Azure DevOps format (USE THIS):**
+
+```csv
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected
+,Test Case,Verify Login,1,Enter username,Username accepted
+,,,1,Enter username,Username accepted
+,,,2,Enter password,Password accepted
+```
+
 ### ❌ Missing duplicated first step
 
 ```csv
@@ -119,14 +147,58 @@ ID,Work Item Type,Title,Test Step,Step Action,Step Expected
 ,Test Case,Test 2,1,Action,Result  # Missing blank row above
 ```
 
+### ❌ Multi-line steps in single cells
+
+```csv
+,Test Case,Test Name,1,"1. Do this
+2. Do that","1. Result 1
+2. Result 2"  # Wrong: each step must be a separate row
+```
+
 ## Validation Checklist
 
 Before finalizing CSV:
 
-- [ ] Header row present with all 6 columns
-- [ ] First column (ID) is empty for all rows
-- [ ] Each test case has "Test Case" in Work Item Type column
-- [ ] First step is duplicated (appears in rows 2 and 3 of each test case)
-- [ ] Subsequent steps leave first 3 columns empty
+- [ ] **Header row is EXACTLY: `ID,Work Item Type,Title,Test Step,Step Action,Step Expected`**
+- [ ] **NO other columns present (no Priority, Area Path, Automated, Tags, etc.)**
+- [ ] First column (ID) is empty for all data rows
+- [ ] Second column contains "Test Case" for first row of each test case only
+- [ ] First step is duplicated (appears in consecutive rows with identical content)
+- [ ] Subsequent steps (2, 3, 4, etc.) leave first 3 columns empty
 - [ ] Blank row between each test case
+- [ ] Each test step is a separate row (no multi-line cells)
 - [ ] No trailing commas or malformed rows
+
+## Quick Reference: Format Requirements
+
+1. **Use only these 6 columns** (in this exact order):
+
+   - ID (always empty)
+   - Work Item Type (only on first row of each test case: "Test Case")
+   - Title (only on first row of each test case)
+   - Test Step (step number: 1, 1, 2, 3, etc.)
+   - Step Action (what to do)
+   - Step Expected (expected result)
+
+2. **First step MUST be duplicated** - this is non-negotiable for Azure DevOps import
+
+3. **Each step is a separate row** - never combine multiple steps in one cell
+
+4. **Blank row between test cases** - required for proper parsing
+
+## Working Examples in Repository
+
+**ALWAYS reference these actual working CSV files when generating new test cases:**
+
+- `docs/test-cases/eNr_118557_welcomelog_in_screen_-_forms_based_authentication.TestCases.csv`
+- `docs/test-cases/eNr_121265_workspace-_screen_share.TestCases.csv`
+- `docs/test-cases/eNr_122019_encounter_refresh-_user_directory_-_participants_tab.TestCases.csv`
+- `docs/test-cases/eNr_118558_lets_get_started_-_patient_consultation.TestCases.csv`
+
+**Before generating a new CSV file, read one of these examples to ensure you use the exact correct format.** These files demonstrate:
+
+- Correct header row structure
+- Proper first step duplication
+- Correct column usage and empty column patterns
+- Blank rows between test cases
+- How to format multiple steps per test case

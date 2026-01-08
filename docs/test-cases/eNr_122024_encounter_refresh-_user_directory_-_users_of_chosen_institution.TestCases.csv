@@ -1,0 +1,37 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected
+,Test Case,Verify Online Users Tab Functionality and Display,1,Select an institution from the institution list,System defaults to "Online" users tab
+,,,1,Select an institution from the institution list,System defaults to "Online" users tab
+,,,2,Observe the users displayed in the Online tab,All users who are members of institution and online are displayed
+,,,3,Observe the order of users in the list,Users are ordered alphabetically by first letter of their names
+,,,4,Observe the status text for online users,Online users display written status "Online"
+,,,5,Observe the avatars of online users,Online users have green circle inside their avatar
+
+,Test Case,Verify Institution Name Display,1,Select an institution from the list and view the user list,Chosen institution name displays in top left corner of list
+,,,1,Select an institution from the list and view the user list,Chosen institution name displays in top left corner of list
+
+,Test Case,Verify Back to Institutions Navigation,1,Select an institution and view the users list,Back to Institutions button is visible
+,,,1,Select an institution and view the users list,Back to Institutions button is visible
+,,,2,Click the Back to Institutions button,User is navigated back to institution list (per User Story 122023)
+
+,Test Case,Verify All Users Tab Functionality,1,Select an institution and view Online Users tab,All Users tab is visible and available
+,,,1,Select an institution and view Online Users tab,All Users tab is visible and available
+,,,2,Click on the All Users tab,All users who are members of institution are displayed (online and offline)
+,,,3,Observe the position of online users,Online users appear at the top of the list
+,,,4,Observe the order of users,Users are ordered alphabetically by first letter of their names
+
+,Test Case,Verify Search Functionality Display and Input,1,Select an institution and view the users list,Search option is visible and available
+,,,1,Select an institution and view the users list,Search option is visible and available
+,,,2,Click on the Search option,Search functionality displays with input field
+,,,3,Type letters into the search field,User can type letters into search field
+
+,Test Case,Verify Search Predictive Text and Selection,1,Click Search and begin typing letters,System displays users who match the entered values
+,,,1,Click Search and begin typing letters,System displays users who match the entered values
+,,,2,Type partial user name,System orders results with best match at top
+,,,3,Click on a user from search results,User can select a user from search results
+
+,Test Case,Verify Search No Results Functionality,1,Click Search and type values with no matches,System displays No Results Found message
+,,,1,Click Search and type values with no matches,System displays No Results Found message
+,,,2,Modify the search term in the search field,User can adjust search values in the search field
+
+,Test Case,Verify User Selection from List,1,Select an institution view users then click on a user,Details section displays (per User Story 122026)
+,,,1,Select an institution view users then click on a user,Details section displays (per User Story 122026)

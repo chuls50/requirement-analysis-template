@@ -1,0 +1,43 @@
+# eNcounter Refresh: Let's Get Started - Patient Consultation Feature Test Plan
+
+## Requirements Analysis
+
+| Scenario Name | Requirement | Test Case |
+|---------------|-------------|-----------|
+| Scenario 1: Workflow options are displayed | 1.1 "Let's Get Started" screen should display after successful authentication | 1.1.1 Verify "Let's Get Started" screen displays after user authenticates successfully |
+|  | 1.2 Patient Consultation option should be visible on the screen | 1.2.1 Verify Patient Consultation option is visible on "Let's Get Started" screen |
+|  | 1.3 Direct-to-Patient Exam option should be visible on the screen | 1.3.1 Verify Direct-to-Patient Exam option is visible on "Let's Get Started" screen |
+|  | 1.4 Video Conference option should be visible on the screen | 1.4.1 Verify Video Conference option is visible on "Let's Get Started" screen |
+|  | 1.5 All three workflow options should be displayed together | 1.5.1 Verify all three workflow options are displayed on the same screen |
+|
+| Scenario 2: Patient Consultation | 2.1 Patient Consultation option should be clickable | 2.1.1 Verify Patient Consultation option is clickable |
+|  | 2.2 Clicking Patient Consultation should navigate to Select Patient screen | 2.2.1 Verify clicking Patient Consultation navigates to Select Patient screen |
+|  | 2.3 Navigation should occur without errors | 2.3.1 Verify navigation to Select Patient screen completes without errors |
+
+## Detailed Test Cases
+
+| Test Case ID | Test Scenario | Expected Result | Test Data |
+|--------------|---------------|-----------------|-----------|
+| 1.1.1 | Enter valid credentials and authenticate | "Let's Get Started" screen displays after successful authentication | Valid username and password |
+| 1.2.1 | View "Let's Get Started" screen after authentication | Patient Consultation option is visible on the screen | Valid credentials |
+| 1.3.1 | View "Let's Get Started" screen after authentication | Direct-to-Patient Exam option is visible on the screen | Valid credentials |
+| 1.4.1 | View "Let's Get Started" screen after authentication | Video Conference option is visible on the screen | Valid credentials |
+| 1.5.1 | View "Let's Get Started" screen after authentication | All three workflow options (Patient Consultation, Direct-to-Patient Exam, Video Conference) are displayed together | Valid credentials |
+| 2.1.1 | Hover over and click Patient Consultation option | Patient Consultation option responds to click action | User on "Let's Get Started" screen |
+| 2.2.1 | Click Patient Consultation option on "Let's Get Started" screen | Application navigates to the Select Patient screen | User on "Let's Get Started" screen |
+| 2.3.1 | Click Patient Consultation and observe navigation | Navigation to Select Patient screen completes without errors or loading issues | User on "Let's Get Started" screen |
+
+## Test Coverage Summary
+
+| Metric | Count |
+|--------|-------|
+| Total Scenarios | 2 |
+| Total Requirements | 8 |
+| Total Test Cases | 8 |
+| CSV Test Cases | 3 |
+
+**Notes:**
+- Each scenario has been analyzed and broken down into specific, testable requirements
+- 8 individual test case IDs were defined (1.1.1 through 2.3.1) during requirement analysis
+- Related test case IDs were logically grouped into 3 CSV test cases for efficient test execution
+- Complete traceability maintained between scenarios → requirements → test case IDs → CSV test cases

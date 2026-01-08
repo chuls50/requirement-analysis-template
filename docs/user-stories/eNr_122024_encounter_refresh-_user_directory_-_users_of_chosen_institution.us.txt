@@ -1,0 +1,69 @@
+User Story ID: 122024
+Title: eNcounter Refresh- User Directory - Users of Chosen Institution
+Type: User Story
+==================================================
+
+ACCEPTANCE CRITERIA:
+
+Scenario 1: Online Users
+Given the eNcounter user has selected an Institution from the list
+When the users of that institution display
+Then the system will default to the "Online" users tab
+And a list of all users who are members of the chosen institution
+And are online will display
+And the lists will be ordered alphabetically by the first letter of the user names
+And online users will have the written status "Online"
+And online users will be denoted by a green circle inside of their avatar
+
+Scenario 2: Institution Name
+Given the eNcounter user has selected an Institution from the list
+When the users of that institution display
+Then the name of the chosen institution will display in the top left hand corner of the list
+
+Scenario 3: Back to Institution List
+Given the eNcounter user has selected and Institution from the list
+And the users of that chosen institution have displayed
+When the user selects the "Back to Institutions" button
+Then the user will be navigated back to the list of institutions that they are a member of
+(as outlined in User Story 122023 eNcounter Refresh- User Directory- Default/Institutions)
+
+Scenario 4: All Users
+Given the eNcounter user has selected an Institution from the list
+And the users of that chosen institution have displayed
+And the system has defaulted to the "Online Users" tab
+When the user selects "All Users"
+Then a list of all of the users who are members of that institution will display
+And online users will be at the top
+And the lists will be ordered alphabetically by the first letter of the user names
+
+Scenario 5: Search
+Given the eNcounter user has selected an Institution from the list
+And the users of that chosen institution have displayed
+When the user selects "Search"
+Then the search functionality will display
+And the user will have the ability to type in letters to assist in finding the user they are looking for
+
+Scenario 6: Search - Predictive Text
+Given the eNcounter user has selected an Institution from the list
+And the users of that chosen institution have displayed
+When the user selects "Search"
+And the user begins typing letters into the search functionality
+Then the system will display users who match the values entered
+And the system will order the users with the best match to the values entered at the top
+And the user will have the ability to select a user from the list
+
+Scenario 7: Search- No Results
+Given the eNcounter user has selected an Institution from the list
+And the users of that chosen institution have displayed
+When the user selects "Search"
+And the user begins typing letters into the search functionality
+And there are no matching results
+Then the system will advise the user " No Results Found"
+And the user can adjust their search values
+
+Scenario 8: User selects a user from the list
+Given the eNcounter user has selected and Institution
+And the users of that chosen institution have displayed
+When the eNcounter user selects another user from the list
+Then the details section will display
+(as outlined in - User Story 122026 eNcounter Refresh- User Directory - Selected User from List)

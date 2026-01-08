@@ -1,0 +1,76 @@
+# eNcounter Refresh: User Directory - Users of Chosen Institution Test Plan
+
+## Requirements Analysis
+
+| Scenario Name | Requirement | Test Case |
+|---------------|-------------|-----------|
+| Scenario 1: Online Users | 1.1 System should default to the "Online" users tab when institution users display | 1.1.1 Verify system defaults to "Online" users tab when institution users display |
+|  | 1.2 List should display all users who are members of the chosen institution and are online | 1.2.1 Verify list displays all users who are members of institution and are online |
+|  | 1.3 User lists should be ordered alphabetically by first letter of user names | 1.3.1 Verify users are ordered alphabetically by first letter of user names |
+|  | 1.4 Online users should have written status "Online" displayed | 1.4.1 Verify online users display written status "Online" |
+|  | 1.5 Online users should be denoted by green circle inside avatar | 1.5.1 Verify online users have green circle inside avatar |
+|
+| Scenario 2: Institution Name | 2.1 Chosen institution name should display in top left corner of list | 2.1.1 Verify chosen institution name displays in top left corner of user list |
+|
+| Scenario 3: Back to Institution List | 3.1 "Back to Institutions" button should be available when users are displayed | 3.1.1 Verify "Back to Institutions" button is visible when users are displayed |
+|  | 3.2 Clicking "Back to Institutions" should navigate user back to institution list | 3.2.1 Verify clicking "Back to Institutions" navigates back to institution list |
+|
+| Scenario 4: All Users | 4.1 "All Users" tab should be available when system defaults to "Online Users" | 4.1.1 Verify "All Users" tab is available when on "Online Users" tab |
+|  | 4.2 Selecting "All Users" should display all users who are members of institution | 4.2.1 Verify selecting "All Users" displays all users who are members of institution |
+|  | 4.3 Online users should be displayed at top of "All Users" list | 4.3.1 Verify online users appear at top of "All Users" list |
+|  | 4.4 Users in "All Users" should be ordered alphabetically by first letter of user names | 4.4.1 Verify users in "All Users" are ordered alphabetically by first letter |
+|
+| Scenario 5: Search | 5.1 "Search" option should be available when users are displayed | 5.1.1 Verify "Search" option is available when users are displayed |
+|  | 5.2 Selecting "Search" should display search functionality | 5.2.1 Verify selecting "Search" displays search functionality |
+|  | 5.3 User should be able to type letters into search to find users | 5.3.1 Verify user can type letters into search field |
+|
+| Scenario 6: Search - Predictive Text | 6.1 System should display users who match search values as user types | 6.1.1 Verify system displays users matching search values as user types |
+|  | 6.2 System should order users with best match to search values at top | 6.2.1 Verify system orders users with best match at top of results |
+|  | 6.3 User should be able to select a user from search results | 6.3.1 Verify user can select a user from search results |
+|
+| Scenario 7: Search - No Results | 7.1 System should display "No Results Found" when search has no matches | 7.1.1 Verify system displays "No Results Found" when search has no matches |
+|  | 7.2 User should be able to adjust search values after no results | 7.2.1 Verify user can adjust search values after seeing "No Results Found" |
+|
+| Scenario 8: User selects a user from the list | 8.1 Selecting a user from list should display details section | 8.1.1 Verify selecting user from list displays details section |
+|
+
+## Detailed Test Cases
+
+| Test Case ID | Test Scenario | Expected Result | Test Data |
+|--------------|---------------|-----------------|-----------|
+| 1.1.1 | Select an institution from the institution list | System defaults to "Online" users tab | Active institution with online users |
+| 1.2.1 | Select an institution and view Online tab | All users who are members of institution and online are displayed | Institution with multiple online users |
+| 1.3.1 | Select an institution and view Online tab | Users are ordered alphabetically by first letter of their names | Institution with users having different starting letters |
+| 1.4.1 | Select an institution and view online users | Online users display written status "Online" | Institution with online users |
+| 1.5.1 | Select an institution and view online users | Online users have green circle inside their avatar | Institution with online users |
+| 2.1.1 | Select an institution and view user list | Chosen institution name displays in top left corner of list | Any institution |
+| 3.1.1 | Select an institution and view users | "Back to Institutions" button is visible | Any institution |
+| 3.2.1 | Select an institution, view users, then click "Back to Institutions" | User is navigated back to institution list (per User Story 122023) | Any institution |
+| 4.1.1 | Select an institution and view Online Users tab | "All Users" tab is visible and available | Any institution |
+| 4.2.1 | Select an institution, view Online Users, then select "All Users" | All users who are members of institution are displayed (online and offline) | Institution with both online and offline users |
+| 4.3.1 | Select "All Users" tab | Online users appear at the top of the list | Institution with both online and offline users |
+| 4.4.1 | Select "All Users" tab and view list | Users are ordered alphabetically by first letter of their names | Institution with users having different starting letters |
+| 5.1.1 | Select an institution and view users | "Search" option is visible and available | Any institution |
+| 5.2.1 | Click on "Search" option | Search functionality displays with input field | Any institution |
+| 5.3.1 | Click on "Search" and type letters | User can type letters into search field | Any institution, any search term |
+| 6.1.1 | Click "Search" and begin typing letters | System displays users who match the entered values | Institution with users, search term matching user names |
+| 6.2.1 | Click "Search" and type partial user name | System orders results with best match at top | Institution with multiple users, partial search term |
+| 6.3.1 | Search for a user and view results | User can click to select a user from search results | Institution with users, search term returning results |
+| 7.1.1 | Click "Search" and type values with no matches | System displays "No Results Found" message | Institution with users, search term with no matches |
+| 7.2.1 | Search with no results and modify search term | User can adjust search values in the search field | Search term with no matches |
+| 8.1.1 | Select an institution, view users, then click on a user | Details section displays (per User Story 122026) | Any institution with users |
+
+## Test Coverage Summary
+
+| Metric | Count |
+|--------|-------|
+| Total Scenarios | 8 |
+| Total Requirements | 22 |
+| Total Test Cases | 22 |
+| CSV Test Cases | 8 |
+
+**Notes:**
+- Each scenario has been analyzed and broken down into specific, testable requirements
+- 22 individual test case IDs were defined (1.1.1 through 8.1.1) during requirement analysis
+- Related test case IDs were logically grouped into 8 CSV test cases for efficient test execution
+- Complete traceability maintained between scenarios → requirements → test case IDs → CSV test cases

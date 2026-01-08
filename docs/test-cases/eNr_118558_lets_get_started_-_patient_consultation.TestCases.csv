@@ -1,0 +1,21 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected
+,Test Case,Verify Let's Get Started screen displays after successful authentication,1,Navigate to the login page,Login page loads successfully
+,,,1,Navigate to the login page,Login page loads successfully
+,,,2,Enter valid username,Username is entered correctly
+,,,3,Enter valid password,Password is entered correctly
+,,,4,Click the login/authenticate button,Authentication is successful
+,,,5,Observe the screen that displays after authentication,"Let's Get Started" screen is displayed
+
+,Test Case,Verify all workflow options are displayed on Let's Get Started screen,1,Authenticate with valid credentials to reach "Let's Get Started" screen,"Let's Get Started" screen displays successfully
+,,,1,Authenticate with valid credentials to reach "Let's Get Started" screen,"Let's Get Started" screen displays successfully
+,,,2,Observe the Patient Consultation option,Patient Consultation option is visible
+,,,3,Observe the Direct-to-Patient Exam option,Direct-to-Patient Exam option is visible
+,,,4,Observe the Video Conference option,Video Conference option is visible
+,,,5,Verify all three options are visible on the same screen,All three workflow options are displayed together on the screen
+
+,Test Case,Verify Patient Consultation navigation,1,Navigate to "Let's Get Started" screen,"Let's Get Started" screen is displayed
+,,,1,Navigate to "Let's Get Started" screen,"Let's Get Started" screen is displayed
+,,,2,Locate the Patient Consultation option,Patient Consultation option is visible and clickable
+,,,3,Click on the Patient Consultation option,Patient Consultation option responds to click
+,,,4,Observe the navigation behavior,Navigation occurs without errors or delays
+,,,5,Verify the Select Patient screen is displayed,Select Patient screen is displayed correctly

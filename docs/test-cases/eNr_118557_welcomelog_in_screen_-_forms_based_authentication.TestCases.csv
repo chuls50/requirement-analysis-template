@@ -1,0 +1,64 @@
+ID,Work Item Type,Title,Test Step,Step Action,Step Expected
+,Test Case,Verify Forms-Based Authentication Welcome Screen Components,1,Configure application for forms-based authentication,Application is configured for forms-based authentication
+,,,1,Configure application for forms-based authentication,Application is configured for forms-based authentication
+,,,2,Launch the application,Application launches successfully
+,,,3,Observe the welcome/log in screen,"Welcome screen displays with username field, password field, Sign-in Log-in button, 'Forgot your password?' button, 'Sign in with Microsoft' button, device clearing message, 'Is this an Emergency?' button, and copyright text"
+
+,Test Case,Verify Successful Authentication,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,2,Enter a valid username in the username field,Username is entered
+,,,3,Enter the corresponding valid password in the password field,Password is entered
+,,,4,Click the Sign-In button,Sign-In button is clicked
+,,,5,Observe navigation,Application navigates to the patient intake screen (#118537)
+
+,Test Case,Verify Failed Authentication and Error Handling,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,2,Enter invalid username and/or password,Invalid credentials are entered
+,,,3,Click the Sign-In button,Sign-In button is clicked
+,,,4,Observe error message display,Error message is displayed to the user
+,,,5,Verify username and password fields are highlighted,"Username and password fields are highlighted red with alert icon"
+,,,6,Click the 'x' button on the error message,Error message closes
+
+,Test Case,Verify Forgot Password Navigation,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,1,Launch application with forms-based authentication,Welcome screen is displayed
+,,,2,Click the 'Forgot your password?' button,'Forgot your password?' button is clicked
+,,,3,Observe navigation,Application navigates to the forgot/change password screen (#108770)
+
+,Test Case,Verify No License Behavior - ClearSteth Listen-Only,1,Ensure no license is activated on the host machine,Host machine has no active license
+,,,1,Ensure no license is activated on the host machine,Host machine has no active license
+,,,2,Launch the application,Application launches
+,,,3,Wait for loading process to complete,Loading process completes
+,,,4,Verify application opens as ClearSteth,Application opens as ClearSteth
+,,,5,Verify listen-only functionality is active,Listen-only functionality is active
+
+,Test Case,Verify eNcounter License Welcome Screen and Figma Compliance,1,Activate eNcounter license on host machine,eNcounter license is activated
+,,,1,Activate eNcounter license on host machine,eNcounter license is activated
+,,,2,Launch the application,Application launches
+,,,3,Wait for loading process to complete,Loading process completes
+,,,4,Observe the welcome/log in screen,eNcounter variant of welcome/log in screen is displayed
+,,,5,Compare screen with Figma design specifications,Welcome screen matches Figma design specifications
+
+,Test Case,Verify ClearSteth License Welcome Screen,1,Activate ClearSteth license on host machine,ClearSteth license is activated
+,,,1,Activate ClearSteth license on host machine,ClearSteth license is activated
+,,,2,Launch the application,Application launches
+,,,3,Wait for loading process to complete,Loading process completes
+,,,4,Observe the welcome/log in screen,ClearSteth variant of welcome/log in screen is displayed (#101722)
+
+,Test Case,Verify Device Clearing Message on eNcounter Welcome Screen,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,2,Locate and read the device clearing message,Message 'Please ensure you have cleared all devices of previous patient data.' is displayed on the welcome screen
+
+,Test Case,Verify Sign in with Microsoft Button on eNcounter Welcome Screen,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,2,Locate the 'Sign in with Microsoft' button,'Sign in with Microsoft' button is visible on eNcounter welcome screen
+,,,3,Verify button is accessible,Button is accessible and can be clicked (detailed functionality in User Story 119830)
+
+,Test Case,Verify Is This an Emergency Button on eNcounter Welcome Screen,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,2,Locate the 'Is this an emergency?' button,'Is this an emergency?' button is visible on eNcounter welcome screen
+,,,3,Verify button is accessible,Button is accessible and can be clicked (detailed functionality in User Story 119831)
+
+,Test Case,Verify Copyright Text on eNcounter Welcome Screen,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,1,Launch application with eNcounter license,eNcounter welcome screen is displayed
+,,,2,Scroll to bottom of screen if necessary,Bottom of screen is visible
+,,,3,Verify copyright text is present,Copyright text is visible at the bottom of the eNcounter welcome screen
